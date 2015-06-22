@@ -1,182 +1,3 @@
-#Distribució Normal#
-#Càcul del nombre de mostres per als que encertem que #
-#la Mitjana poblacional es troba dins de l'interval. Variàncaia poblacional DESconeguda.#
-#Fixem la llavor per a que l'experiment sempre surti el mateix#
-set.seed(1000)#
-#Fiquem les dades#
-rep<-50000#
-mu<-10#
-sigma<-3#
-alfa<-0.05#
-nvars=10#
-matriu.x<-matrix(rnorm(rep*nvars,mu,sigma),rep)#
-	mu0.hat.10<-rowMeans(matriu.x)#
-	matriu.xc<-(matriu.x-mu0.hat.10)^2#
-	var0.hat.10<-rowSums(matriu.xc)/(nvars-1)#
-	II_var0.hat.10<-(nvars-1)*var0.hat.10/qchisq(1-alfa/2,nvars-1)#
-	IS_var0.hat.10<-(nvars-1)*var0.hat.10/qchisq(alfa/2,nvars-1)#
-x<-vector()#
-for (i in 1:rep){#
-	if (II_var0.hat.10[i] < sigma^2 && sigma^2 < IS_var0.hat.10[i]) {#
-		x[i]<-1#
-		} else {#
-		x[i]<-0#
-		}#
-}#
-	encerts.10<-round(sum(x)/rep,2)*100#
-nvars=20#
-matriu.x<-matrix(rnorm(rep*nvars,mu,sigma),rep)#
-	mu0.hat.20<-rowMeans(matriu.x)#
-	matriu.xc<-(matriu.x-mu0.hat.20)^2#
-	var0.hat.20<-rowSums(matriu.xc)/(nvars-1)#
-	II_var0.hat.20<-(nvars-1)*var0.hat.20/qchisq(1-alfa/2,nvars-1)#
-	IS_var0.hat.20<-(nvars-1)*var0.hat.20/qchisq(alfa/2,nvars-1)#
-x<-vector()#
-for (i in 1:rep){#
-	if (II_var0.hat.20[i] < sigma^2 && sigma^2 < IS_var0.hat.20[i]) {#
-		x[i]<-1#
-		} else {#
-		x[i]<-0#
-		}#
-}#
-	encerts.20<-round(sum(x)/rep,2)*100#
-nvars=40#
-matriu.x<-matrix(rnorm(rep*nvars,mu,sigma),rep)#
-	mu0.hat.40<-rowMeans(matriu.x)#
-	matriu.xc<-(matriu.x-mu0.hat.40)^2#
-	var0.hat.40<-rowSums(matriu.xc)/(nvars-1)#
-	II_var0.hat.40<-(nvars-1)*var0.hat.40/qchisq(1-alfa/2,nvars-1)#
-	IS_var0.hat.40<-(nvars-1)*var0.hat.40/qchisq(alfa/2,nvars-1)#
-x<-vector()#
-for (i in 1:rep){#
-	if (II_var0.hat.40[i] < sigma^2 && sigma^2 < IS_var0.hat.40[i]) {#
-		x[i]<-1#
-		} else {#
-		x[i]<-0#
-		}#
-}#
-	encerts.40<-round(sum(x)/rep,2)*100#
-nvars=60#
-matriu.x<-matrix(rnorm(rep*nvars,mu,sigma),rep)#
-	mu0.hat.60<-rowMeans(matriu.x)#
-	matriu.xc<-(matriu.x-mu0.hat.60)^2#
-	var0.hat.60<-rowSums(matriu.xc)/(nvars-1)#
-	II_var0.hat.60<-(nvars-1)*var0.hat.60/qchisq(1-alfa/2,nvars-1)#
-	IS_var0.hat.60<-(nvars-1)*var0.hat.60/qchisq(alfa/2,nvars-1)#
-x<-vector()#
-for (i in 1:rep){#
-	if (II_var0.hat.60[i] < sigma^2 && sigma^2 < IS_var0.hat.60[i]) {#
-		x[i]<-1#
-		} else {#
-		x[i]<-0#
-		}#
-}#
-	encerts.60<-round(sum(x)/rep,2)*100#
-nvars=80#
-matriu.x<-matrix(rnorm(rep*nvars,mu,sigma),rep)#
-	mu0.hat.80<-rowMeans(matriu.x)#
-	matriu.xc<-(matriu.x-mu0.hat.80)^2#
-	var0.hat.80<-rowSums(matriu.xc)/(nvars-1)#
-	II_var0.hat.80<-(nvars-1)*var0.hat.80/qchisq(1-alfa/2,nvars-1)#
-	IS_var0.hat.80<-(nvars-1)*var0.hat.80/qchisq(alfa/2,nvars-1)#
-x<-vector()#
-for (i in 1:rep){#
-	if (II_var0.hat.80[i] < sigma^2 && sigma^2 < IS_var0.hat.80[i]) {#
-		x[i]<-1#
-		} else {#
-		x[i]<-0#
-		}#
-}#
-	encerts.80<-round(sum(x)/rep,2)*100#
-nvars=100#
-matriu.x<-matrix(rnorm(rep*nvars,mu,sigma),rep)#
-	mu0.hat.100<-rowMeans(matriu.x)#
-	matriu.xc<-(matriu.x-mu0.hat.100)^2#
-	var0.hat.100<-rowSums(matriu.xc)/(nvars-1)#
-	II_var0.hat.100<-(nvars-1)*var0.hat.100/qchisq(1-alfa/2,nvars-1)#
-	IS_var0.hat.100<-(nvars-1)*var0.hat.100/qchisq(alfa/2,nvars-1)#
-x<-vector()#
-for (i in 1:rep){#
-	if (II_var0.hat.100[i] < sigma^2 && sigma^2 < IS_var0.hat.100[i]) {#
-		x[i]<-1#
-		} else {#
-		x[i]<-0#
-		}#
-}#
-	encerts.100<-round(sum(x)/rep,2)*100#
-#Anàlisi gràfica.#
-#Generem una matriu gràfica d'una fila i dues columnes#
-par(mfrow = c(2,3), oma=c(1, 0, 4, 0))#
-#Gràfic a la posició 1,1#
-y<-seq(0, 10*sigma^2, along=seq(1,rep,1))#
-x<-seq(1,rep,1)#
-plot(x,y, main='n=10',xlab = "Rèpliques", ylab = "", type="n")#
-abline(h=sigma^2)#
-lines(x,var0.hat.10, lty=1, lwd=2, col='red')#
-lines(x,II_var0.hat.10, lty=1, lwd=2, col='blue')#
-lines(x,IS_var0.hat.10, lty=1, lwd=2, col='blue')#
-text(0.75*rep,0.95*(10*sigma^2), "Encerts", cex=1.4, col='brown')#
-text(0.95*rep,0.95*(10*sigma^2), paste(encerts.10,"%"), cex=1.4, col='brown')#
-#Gràfic a la posició 1,2#
-y<-seq(0, 10*sigma^2, along=seq(1,rep,1))#
-x<-seq(1,rep,1)#
-plot(x,y, main='n=20',xlab = "Rèpliques", ylab = "", type="n")#
-abline(h=sigma^2)#
-lines(x,var0.hat.20, lty=1, lwd=2, col='red')#
-lines(x,II_var0.hat.20, lty=1, lwd=2, col='blue')#
-lines(x,IS_var0.hat.20, lty=1, lwd=2, col='blue')#
-text(0.75*rep,0.95*(10*sigma^2), "Encerts", cex=1.4, col='brown')#
-text(0.95*rep,0.95*(10*sigma^2), paste(encerts.20,"%"), cex=1.4, col='brown')#
-#Gràfic a la posició 1,3#
-y<-seq(0, 10*sigma^2, along=seq(1,rep,1))#
-x<-seq(1,rep,1)#
-plot(x,y, main='n=40',xlab = "Rèpliques", ylab = "", type="n")#
-abline(h=sigma^2)#
-lines(x,var0.hat.40, lty=1, lwd=2, col='red')#
-lines(x,II_var0.hat.40, lty=1, lwd=2, col='blue')#
-lines(x,IS_var0.hat.40, lty=1, lwd=2, col='blue')#
-text(0.75*rep,0.95*(10*sigma^2), "Encerts", cex=1.4, col='brown')#
-text(0.95*rep,0.95*(10*sigma^2), paste(encerts.40,"%"), cex=1.4, col='brown')#
-#Gràfic a la posició 1,1#
-y<-seq(0, 10*sigma^2, along=seq(1,rep,1))#
-x<-seq(1,rep,1)#
-plot(x,y, main='n=60',xlab = "Rèpliques", ylab = "", type="n")#
-abline(h=sigma^2)#
-lines(x,var0.hat.60, lty=1, lwd=2, col='red')#
-lines(x,II_var0.hat.60, lty=1, lwd=2, col='blue')#
-lines(x,IS_var0.hat.60, lty=1, lwd=2, col='blue')#
-text(0.75*rep,0.95*(10*sigma^2), "Encerts", cex=1.4, col='brown')#
-text(0.95*rep,0.95*(10*sigma^2), paste(encerts.60,"%"), cex=1.4, col='brown')#
-#Gràfic a la posició 1,1#
-y<-seq(0, 10*sigma^2, along=seq(1,rep,1))#
-x<-seq(1,rep,1)#
-plot(x,y, main='n=80',xlab = "Rèpliques", ylab = "", type="n")#
-abline(h=sigma^2)#
-lines(x,var0.hat.80, lty=1, lwd=2, col='red')#
-lines(x,II_var0.hat.80, lty=1, lwd=2, col='blue')#
-lines(x,IS_var0.hat.80, lty=1, lwd=2, col='blue')#
-text(0.75*rep,0.95*(10*sigma^2), "Encerts", cex=1.4, col='brown')#
-text(0.95*rep,0.95*(10*sigma^2), paste(encerts.80,"%"), cex=1.4, col='brown')#
-#Gràfic a la posició 1,1#
-y<-seq(0, 10*sigma^2, along=seq(1,rep,1))#
-x<-seq(1,rep,1)#
-plot(x,y, main='n=100',xlab = "Rèpliques", ylab = "", type="n")#
-abline(h=sigma^2)#
-lines(x,var0.hat.100, lty=1, lwd=2, col='red')#
-lines(x,II_var0.hat.100, lty=1, lwd=2, col='blue')#
-lines(x,IS_var0.hat.100, lty=1, lwd=2, col='blue')#
-text(0.75*rep,0.95*(10*sigma^2), "Encerts", cex=1.4, col='brown')#
-text(0.95*rep,0.95*(10*sigma^2), paste(encerts.100,"%"), cex=1.4, col='brown')#
-mtext(side=3, line=0, cex=1.5, outer=T,"Interval de confiança per a la Variància Poblacional.Percentatge d'encerts.")#
-mtext(side=1, line=-1, cex=0.75, outer=T, adj=1, "Script creat per Jordi López-Tamayo  ")
-library(swirl)
-swirl()
-1:20
-pi:10
-15:1
-?:
-?pi:10
-?(:)
 ?":"
 seq(1, 20)
 seq(0, 10, by=0.5)
@@ -796,107 +617,22 @@ ls
 identical(ls, debug(ls))
 debug(ls)
 call(ls)
-source("submitscript3.R")
 dir()
 source("rprog-scripts-submitscript3.R")
-best <- function(state, outcome) {#
-        ## Read outcome data#
-        ##outcome_name: "heart attack", "heart failure", "pneumonia"#
-## Check that state and outcome are valid#
-## Return hospital name in that state with lowest 30-day death#
-## rate#
-        #read in the desired data#
-        data <- read.csv("outcome-of-care-measures.csv", colClasses = "character")#
-        #check if the state and outcomes are valid#
-        states <- data[ , 7]#
-        outcomes <- c("heart attack", "heart failure", "pneumonia")#
-        if ((state %in% states) == FALSE) {#
-                stop(print("invalid state"))#
-        }#
-        else if ((outcome %in% outcomes) == FALSE) {#
-                stop(print("invalid outcome"))#
-        }#
-        #get the subset of the data with the desired state#
-        new_data <- subset(data, State == state)#
-        #get the desired outcome column from the data file#
-        if (outcome == "heart attack") {#
-                outcome_column <- 11#
-        }#
-        else if (outcome == "heart failure") {#
-                outcome_column <- 17#
-        }#
-        else {#
-                outcome_column <- 23#
-        }#
-        #get rid of the NA's in the desired outcome column#
-        required_columns <- as.numeric(new_data[,outcome_column])#
-        bad <- is.na(required_columns)#
-        desired_data <- new_data[!bad, ]#
-        #find the hospitals in the rows with the minimum outcome value#
-        columns_considered <- as.numeric(desired_data[, outcome_column])#
-        desired_rows <- which(columns_considered == min(columns_considered))#
-        desired_hospitals <- desired_data[desired_rows, 2]#
-        #if there are multiple hospitals with the minimum outcome value, then#
-        #return the first hospital name from the alphabetically sorted hospital#
-        #names list#
-        if (length(desired_hospitals) > 1) {#
-                hospitals_sorted <- sort(desired_hospitals)#
-                hospitals_sorted[1]#
-        }#
-        else {#
-                desired_hospitals#
-        }#
-}
+submit()
+source("best.R")
+best("SC", "heart attack")
 submit()
 submit()
-best <- function(state, outcome) {#
-        ## Read outcome data#
-        ##outcome_name: "heart attack", "heart failure", "pneumonia"#
-## Check that state and outcome are valid#
-## Return hospital name in that state with lowest 30-day death#
-## rate#
-        #read in the desired data#
-        data <- read.csv("outcome-of-care-measures.csv", colClasses = "character")#
-        #check if the state and outcomes are valid#
-        states <- data[ , 7]#
-        outcomes <- c("heart attack", "heart failure", "pneumonia")#
-        if ((state %in% states) == FALSE) {#
-                stop(print("invalid state"))#
-        }#
-        else if ((outcome %in% outcomes) == FALSE) {#
-                stop(print("invalid outcome"))#
-        }#
-        #get the subset of the data with the desired state#
-        new_data <- subset(data, State == state)#
-        #get the desired outcome column from the data file#
-        if (outcome == "heart attack") {#
-                outcome_column <- 11#
-        }#
-        else if (outcome == "heart failure") {#
-                outcome_column <- 17#
-        }#
-        else {#
-                outcome_column <- 23#
-        }#
-        #get rid of the NA's in the desired outcome column#
-        required_columns <- as.numeric(new_data[,outcome_column])#
-        bad <- is.na(required_columns)#
-        desired_data <- new_data[!bad, ]#
-        #find the hospitals in the rows with the minimum outcome value#
-        columns_considered <- as.numeric(desired_data[, outcome_column])#
-        desired_rows <- which(columns_considered == min(columns_considered))#
-        desired_hospitals <- desired_data[desired_rows, 2]#
-        #if there are multiple hospitals with the minimum outcome value, then#
-        #return the first hospital name from the alphabetically sorted hospital#
-        #names list#
-        if (length(desired_hospitals) > 1) {#
-                hospitals_sorted <- sort(desired_hospitals)#
-                hospitals_sorted[1]#
-        }#
-        else {#
-                desired_hospitals#
-        }#
-}
-dir()
+submit()
+submit()
+submit()
+submit()
+submit()
+source("rankall.R")
+rankall("heart attack", 4)
+source("rankhospital.R")
+rankall("heart attack", 4)
+submit()
 submit()
 submit()
