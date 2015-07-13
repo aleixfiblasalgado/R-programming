@@ -1,902 +1,0 @@
-#Distribució Normal#
-#Càcul del nombre de mostres per als que encertem que #
-#la Mitjana poblacional es troba dins de l'interval. Variàncaia poblacional DESconeguda.#
-#Fixem la llavor per a que l'experiment sempre surti el mateix#
-set.seed(1000)#
-#Fiquem les dades#
-rep<-50000#
-mu<-10#
-sigma<-3#
-alfa<-0.05#
-nvars=10#
-matriu.x<-matrix(rnorm(rep*nvars,mu,sigma),rep)#
-	mu0.hat.10<-rowMeans(matriu.x)#
-	matriu.xc<-(matriu.x-mu0.hat.10)^2#
-	var0.hat.10<-rowSums(matriu.xc)/(nvars-1)#
-	II_var0.hat.10<-(nvars-1)*var0.hat.10/qchisq(1-alfa/2,nvars-1)#
-	IS_var0.hat.10<-(nvars-1)*var0.hat.10/qchisq(alfa/2,nvars-1)#
-x<-vector()#
-for (i in 1:rep){#
-	if (II_var0.hat.10[i] < sigma^2 && sigma^2 < IS_var0.hat.10[i]) {#
-		x[i]<-1#
-		} else {#
-		x[i]<-0#
-		}#
-}#
-	encerts.10<-round(sum(x)/rep,2)*100#
-nvars=20#
-matriu.x<-matrix(rnorm(rep*nvars,mu,sigma),rep)#
-	mu0.hat.20<-rowMeans(matriu.x)#
-	matriu.xc<-(matriu.x-mu0.hat.20)^2#
-	var0.hat.20<-rowSums(matriu.xc)/(nvars-1)#
-	II_var0.hat.20<-(nvars-1)*var0.hat.20/qchisq(1-alfa/2,nvars-1)#
-	IS_var0.hat.20<-(nvars-1)*var0.hat.20/qchisq(alfa/2,nvars-1)#
-x<-vector()#
-for (i in 1:rep){#
-	if (II_var0.hat.20[i] < sigma^2 && sigma^2 < IS_var0.hat.20[i]) {#
-		x[i]<-1#
-		} else {#
-		x[i]<-0#
-		}#
-}#
-	encerts.20<-round(sum(x)/rep,2)*100#
-nvars=40#
-matriu.x<-matrix(rnorm(rep*nvars,mu,sigma),rep)#
-	mu0.hat.40<-rowMeans(matriu.x)#
-	matriu.xc<-(matriu.x-mu0.hat.40)^2#
-	var0.hat.40<-rowSums(matriu.xc)/(nvars-1)#
-	II_var0.hat.40<-(nvars-1)*var0.hat.40/qchisq(1-alfa/2,nvars-1)#
-	IS_var0.hat.40<-(nvars-1)*var0.hat.40/qchisq(alfa/2,nvars-1)#
-x<-vector()#
-for (i in 1:rep){#
-	if (II_var0.hat.40[i] < sigma^2 && sigma^2 < IS_var0.hat.40[i]) {#
-		x[i]<-1#
-		} else {#
-		x[i]<-0#
-		}#
-}#
-	encerts.40<-round(sum(x)/rep,2)*100#
-nvars=60#
-matriu.x<-matrix(rnorm(rep*nvars,mu,sigma),rep)#
-	mu0.hat.60<-rowMeans(matriu.x)#
-	matriu.xc<-(matriu.x-mu0.hat.60)^2#
-	var0.hat.60<-rowSums(matriu.xc)/(nvars-1)#
-	II_var0.hat.60<-(nvars-1)*var0.hat.60/qchisq(1-alfa/2,nvars-1)#
-	IS_var0.hat.60<-(nvars-1)*var0.hat.60/qchisq(alfa/2,nvars-1)#
-x<-vector()#
-for (i in 1:rep){#
-	if (II_var0.hat.60[i] < sigma^2 && sigma^2 < IS_var0.hat.60[i]) {#
-		x[i]<-1#
-		} else {#
-		x[i]<-0#
-		}#
-}#
-	encerts.60<-round(sum(x)/rep,2)*100#
-nvars=80#
-matriu.x<-matrix(rnorm(rep*nvars,mu,sigma),rep)#
-	mu0.hat.80<-rowMeans(matriu.x)#
-	matriu.xc<-(matriu.x-mu0.hat.80)^2#
-	var0.hat.80<-rowSums(matriu.xc)/(nvars-1)#
-	II_var0.hat.80<-(nvars-1)*var0.hat.80/qchisq(1-alfa/2,nvars-1)#
-	IS_var0.hat.80<-(nvars-1)*var0.hat.80/qchisq(alfa/2,nvars-1)#
-x<-vector()#
-for (i in 1:rep){#
-	if (II_var0.hat.80[i] < sigma^2 && sigma^2 < IS_var0.hat.80[i]) {#
-		x[i]<-1#
-		} else {#
-		x[i]<-0#
-		}#
-}#
-	encerts.80<-round(sum(x)/rep,2)*100#
-nvars=100#
-matriu.x<-matrix(rnorm(rep*nvars,mu,sigma),rep)#
-	mu0.hat.100<-rowMeans(matriu.x)#
-	matriu.xc<-(matriu.x-mu0.hat.100)^2#
-	var0.hat.100<-rowSums(matriu.xc)/(nvars-1)#
-	II_var0.hat.100<-(nvars-1)*var0.hat.100/qchisq(1-alfa/2,nvars-1)#
-	IS_var0.hat.100<-(nvars-1)*var0.hat.100/qchisq(alfa/2,nvars-1)#
-x<-vector()#
-for (i in 1:rep){#
-	if (II_var0.hat.100[i] < sigma^2 && sigma^2 < IS_var0.hat.100[i]) {#
-		x[i]<-1#
-		} else {#
-		x[i]<-0#
-		}#
-}#
-	encerts.100<-round(sum(x)/rep,2)*100#
-#Anàlisi gràfica.#
-#Generem una matriu gràfica d'una fila i dues columnes#
-par(mfrow = c(2,3), oma=c(1, 0, 4, 0))#
-#Gràfic a la posició 1,1#
-y<-seq(0, 10*sigma^2, along=seq(1,rep,1))#
-x<-seq(1,rep,1)#
-plot(x,y, main='n=10',xlab = "Rèpliques", ylab = "", type="n")#
-abline(h=sigma^2)#
-lines(x,var0.hat.10, lty=1, lwd=2, col='red')#
-lines(x,II_var0.hat.10, lty=1, lwd=2, col='blue')#
-lines(x,IS_var0.hat.10, lty=1, lwd=2, col='blue')#
-text(0.75*rep,0.95*(10*sigma^2), "Encerts", cex=1.4, col='brown')#
-text(0.95*rep,0.95*(10*sigma^2), paste(encerts.10,"%"), cex=1.4, col='brown')#
-#Gràfic a la posició 1,2#
-y<-seq(0, 10*sigma^2, along=seq(1,rep,1))#
-x<-seq(1,rep,1)#
-plot(x,y, main='n=20',xlab = "Rèpliques", ylab = "", type="n")#
-abline(h=sigma^2)#
-lines(x,var0.hat.20, lty=1, lwd=2, col='red')#
-lines(x,II_var0.hat.20, lty=1, lwd=2, col='blue')#
-lines(x,IS_var0.hat.20, lty=1, lwd=2, col='blue')#
-text(0.75*rep,0.95*(10*sigma^2), "Encerts", cex=1.4, col='brown')#
-text(0.95*rep,0.95*(10*sigma^2), paste(encerts.20,"%"), cex=1.4, col='brown')#
-#Gràfic a la posició 1,3#
-y<-seq(0, 10*sigma^2, along=seq(1,rep,1))#
-x<-seq(1,rep,1)#
-plot(x,y, main='n=40',xlab = "Rèpliques", ylab = "", type="n")#
-abline(h=sigma^2)#
-lines(x,var0.hat.40, lty=1, lwd=2, col='red')#
-lines(x,II_var0.hat.40, lty=1, lwd=2, col='blue')#
-lines(x,IS_var0.hat.40, lty=1, lwd=2, col='blue')#
-text(0.75*rep,0.95*(10*sigma^2), "Encerts", cex=1.4, col='brown')#
-text(0.95*rep,0.95*(10*sigma^2), paste(encerts.40,"%"), cex=1.4, col='brown')#
-#Gràfic a la posició 1,1#
-y<-seq(0, 10*sigma^2, along=seq(1,rep,1))#
-x<-seq(1,rep,1)#
-plot(x,y, main='n=60',xlab = "Rèpliques", ylab = "", type="n")#
-abline(h=sigma^2)#
-lines(x,var0.hat.60, lty=1, lwd=2, col='red')#
-lines(x,II_var0.hat.60, lty=1, lwd=2, col='blue')#
-lines(x,IS_var0.hat.60, lty=1, lwd=2, col='blue')#
-text(0.75*rep,0.95*(10*sigma^2), "Encerts", cex=1.4, col='brown')#
-text(0.95*rep,0.95*(10*sigma^2), paste(encerts.60,"%"), cex=1.4, col='brown')#
-#Gràfic a la posició 1,1#
-y<-seq(0, 10*sigma^2, along=seq(1,rep,1))#
-x<-seq(1,rep,1)#
-plot(x,y, main='n=80',xlab = "Rèpliques", ylab = "", type="n")#
-abline(h=sigma^2)#
-lines(x,var0.hat.80, lty=1, lwd=2, col='red')#
-lines(x,II_var0.hat.80, lty=1, lwd=2, col='blue')#
-lines(x,IS_var0.hat.80, lty=1, lwd=2, col='blue')#
-text(0.75*rep,0.95*(10*sigma^2), "Encerts", cex=1.4, col='brown')#
-text(0.95*rep,0.95*(10*sigma^2), paste(encerts.80,"%"), cex=1.4, col='brown')#
-#Gràfic a la posició 1,1#
-y<-seq(0, 10*sigma^2, along=seq(1,rep,1))#
-x<-seq(1,rep,1)#
-plot(x,y, main='n=100',xlab = "Rèpliques", ylab = "", type="n")#
-abline(h=sigma^2)#
-lines(x,var0.hat.100, lty=1, lwd=2, col='red')#
-lines(x,II_var0.hat.100, lty=1, lwd=2, col='blue')#
-lines(x,IS_var0.hat.100, lty=1, lwd=2, col='blue')#
-text(0.75*rep,0.95*(10*sigma^2), "Encerts", cex=1.4, col='brown')#
-text(0.95*rep,0.95*(10*sigma^2), paste(encerts.100,"%"), cex=1.4, col='brown')#
-mtext(side=3, line=0, cex=1.5, outer=T,"Interval de confiança per a la Variància Poblacional.Percentatge d'encerts.")#
-mtext(side=1, line=-1, cex=0.75, outer=T, adj=1, "Script creat per Jordi López-Tamayo  ")
-library(swirl)
-swirl()
-1:20
-pi:10
-15:1
-?:
-?pi:10
-?(:)
-?":"
-seq(1, 20)
-seq(0, 10, by=0.5)
-my_seq <- seq(5, 10, length=30)
-length(my_seq)
-1:length(my_seq)
-seq(along.with = my_seq)
-seq_along(my_seq)
-rep(0, times=40)
-rep(c(0, 1, 2))
-rep(c(0, 1, 2), times = 10)
-rep(c(0, 1, 2), each = 10)
-num_vect <- c(0.5, 55, -10, 6)
-tf <- num_vect < 1
-tf
-num_vect >= 6
-my_char <- c("My", "name", "is")
-print(my_char)
-my_char
-paste(my_char, collapse = " ")
-my_name <- c(my_char, "Aleix")
-my_name
-paste(my_name, collapse = " ")
-?paste
-paste("Hello", "world!", sep = " ")
-paste(1:3, c("X", "Y", "Z"), sep="")
-paste(LETTERS, 1:4, sep = "-")
-#Jordi López-Tamayo, Gener 2011#
-#Relació entre la distribució de la proporció mostral #
-#i la mida mostral#
-phi <- 0.5 ; #
-IInf <-0.45#
-ISup <-0.55#
-Text_I <-paste("[",IInf,",",ISup,"]")#
-# Generació del gràfic#
-Text_I#
-par(mfrow=c(2,2), oma=c(0, 0, 4, 0))#
-nobs<-20#
-sigma_m <-sqrt(phi*(1-phi)/nobs); #
-eix <- c(0,1)#
-x <- seq(eix[1], eix[2], length = 1001)#
-y <- dnorm(x, phi, sigma_m)#
-plot(x, y, type='l', xlab = expression(italic(n==20)), ylab = expression(italic(Densitat)))#
-abline(h = 0)#
-x1 <- x[x >= IInf &  x<= ISup] ; y1 <- dnorm(x1, phi, sigma_m)#
-x2 <- c(x1[1],x1, x1[length(x1)], x1[1])#
-y2 <- c(0, y1, 0, 0)#
-polygon(x2, y2, col = 'blue')#
-#Afegim Text#
-pr<-pnorm(ISup, phi, sigma_m)-pnorm(IInf, phi, sigma_m)#
-text(0.85, 0.85*dnorm(0.5,0.5,sigma_m), Text_I)#
-text(0.85, 0.75*dnorm(0.5,0.5,sigma_m), round(pr, digits=3))#
-nobs<-30#
-sigma_m <-sqrt(phi*(1-phi)/nobs); #
-x <- seq(eix[1], eix[2], length = 1001)#
-y <- dnorm(x, phi, sigma_m)#
-plot(x, y, type='l', xlab = expression(italic(n==30)), ylab = expression(italic(Densitat)))#
-abline(h = 0)#
-x1 <- x[x >= IInf &  x<= ISup] ; y1 <- dnorm(x1, phi, sigma_m)#
-x2 <- c(x1[1],x1, x1[length(x1)], x1[1])#
-y2 <- c(0, y1, 0, 0)#
-polygon(x2, y2, col = 'blue')#
-pr<-pnorm(ISup, phi, sigma_m)-pnorm(IInf, phi, sigma_m)#
-text(0.85, 0.85*dnorm(0.5,0.5,sigma_m), Text_I)#
-text(0.85, 0.75*dnorm(0.5,0.5,sigma_m), round(pr, digits=3))#
-nobs<-50#
-sigma_m <-sqrt(phi*(1-phi)/nobs); #
-x <- seq(eix[1], eix[2], length = 1001)#
-y <- dnorm(x, phi, sigma_m)#
-plot(x, y, type='l', xlab = expression(italic(n==50)), ylab = expression(italic(Densitat)))#
-abline(h = 0)#
-x1 <- x[x >= IInf &  x<= ISup] ; y1 <- dnorm(x1, phi, sigma_m)#
-x2 <- c(x1[1],x1, x1[length(x1)], x1[1])#
-y2 <- c(0, y1, 0, 0)#
-polygon(x2, y2, col = 'blue')#
-#Afegim Text#
-pr<-pnorm(ISup, phi, sigma_m)-pnorm(IInf, phi, sigma_m)#
-text(0.85, 0.85*dnorm(0.5,0.5,sigma_m), Text_I)#
-text(0.85, 0.75*dnorm(0.5,0.5,sigma_m), round(pr, digits=3))#
-nobs<-100#
-sigma_m <-sqrt(phi*(1-phi)/nobs); #
-x <- seq(eix[1], eix[2], length = 1001)#
-y <- dnorm(x, phi, sigma_m)#
-plot(x, y, type='l', xlab = expression(italic(n==100)), ylab = expression(italic(Densitat)))#
-abline(h = 0)#
-x1 <- x[x >= IInf &  x<= ISup] ; y1 <- dnorm(x1, phi, sigma_m)#
-x2 <- c(x1[1],x1, x1[length(x1)], x1[1])#
-y2 <- c(0, y1, 0, 0)#
-polygon(x2, y2, col = 'blue')#
-#Afegim Text#
-pr<-pnorm(ISup, phi, sigma_m)-pnorm(IInf, phi, sigma_m)#
-text(0.85, 0.85*dnorm(0.5,0.5,sigma_m), Text_I)#
-text(0.85, 0.75*dnorm(0.5,0.5,sigma_m), round(pr, digits=3))#
-mtext(side=3, line=0, cex=1.5, outer=T,"Relació entre la proporció mostral i la mida mostral")#
-mtext(side=1, line=-2, cex=0.75, outer=T, adj=1, "Script creat per Jordi López-Tamayo")
-#Distribució Normal#
-#Càcul del nombre de mostres per als que encertem que #
-#la Mitjana poblacional es troba dins de l'interval. Variàncaia poblacional DESconeguda.#
-#Fixem la llavor per a que l'experiment sempre surti el mateix#
-set.seed(1000)#
-#Fiquem les dades#
-rep<-5000#
-mu<-10#
-sigma<-3#
-alfa<-0.05#
-nvars=10#
-matriu.x<-matrix(rnorm(rep*nvars,mu,sigma),rep)#
-	mu0.hat.10<-rowMeans(matriu.x)#
-	matriu.xc<-(matriu.x-mu0.hat.10)^2#
-	var0.hat.10<-rowSums(matriu.xc)/(nvars-1)#
-	II_var0.hat.10<-(nvars-1)*var0.hat.10/qchisq(1-alfa/2,nvars-1)#
-	IS_var0.hat.10<-(nvars-1)*var0.hat.10/qchisq(alfa/2,nvars-1)#
-x<-vector()#
-for (i in 1:rep){#
-	if (II_var0.hat.10[i] < sigma^2 && sigma^2 < IS_var0.hat.10[i]) {#
-		x[i]<-1#
-		} else {#
-		x[i]<-0#
-		}#
-}#
-	encerts.10<-round(sum(x)/rep,2)*100#
-nvars=20#
-matriu.x<-matrix(rnorm(rep*nvars,mu,sigma),rep)#
-	mu0.hat.20<-rowMeans(matriu.x)#
-	matriu.xc<-(matriu.x-mu0.hat.20)^2#
-	var0.hat.20<-rowSums(matriu.xc)/(nvars-1)#
-	II_var0.hat.20<-(nvars-1)*var0.hat.20/qchisq(1-alfa/2,nvars-1)#
-	IS_var0.hat.20<-(nvars-1)*var0.hat.20/qchisq(alfa/2,nvars-1)#
-x<-vector()#
-for (i in 1:rep){#
-	if (II_var0.hat.20[i] < sigma^2 && sigma^2 < IS_var0.hat.20[i]) {#
-		x[i]<-1#
-		} else {#
-		x[i]<-0#
-		}#
-}#
-	encerts.20<-round(sum(x)/rep,2)*100#
-nvars=40#
-matriu.x<-matrix(rnorm(rep*nvars,mu,sigma),rep)#
-	mu0.hat.40<-rowMeans(matriu.x)#
-	matriu.xc<-(matriu.x-mu0.hat.40)^2#
-	var0.hat.40<-rowSums(matriu.xc)/(nvars-1)#
-	II_var0.hat.40<-(nvars-1)*var0.hat.40/qchisq(1-alfa/2,nvars-1)#
-	IS_var0.hat.40<-(nvars-1)*var0.hat.40/qchisq(alfa/2,nvars-1)#
-x<-vector()#
-for (i in 1:rep){#
-	if (II_var0.hat.40[i] < sigma^2 && sigma^2 < IS_var0.hat.40[i]) {#
-		x[i]<-1#
-		} else {#
-		x[i]<-0#
-		}#
-}#
-	encerts.40<-round(sum(x)/rep,2)*100#
-nvars=60#
-matriu.x<-matrix(rnorm(rep*nvars,mu,sigma),rep)#
-	mu0.hat.60<-rowMeans(matriu.x)#
-	matriu.xc<-(matriu.x-mu0.hat.60)^2#
-	var0.hat.60<-rowSums(matriu.xc)/(nvars-1)#
-	II_var0.hat.60<-(nvars-1)*var0.hat.60/qchisq(1-alfa/2,nvars-1)#
-	IS_var0.hat.60<-(nvars-1)*var0.hat.60/qchisq(alfa/2,nvars-1)#
-x<-vector()#
-for (i in 1:rep){#
-	if (II_var0.hat.60[i] < sigma^2 && sigma^2 < IS_var0.hat.60[i]) {#
-		x[i]<-1#
-		} else {#
-		x[i]<-0#
-		}#
-}#
-	encerts.60<-round(sum(x)/rep,2)*100#
-nvars=80#
-matriu.x<-matrix(rnorm(rep*nvars,mu,sigma),rep)#
-	mu0.hat.80<-rowMeans(matriu.x)#
-	matriu.xc<-(matriu.x-mu0.hat.80)^2#
-	var0.hat.80<-rowSums(matriu.xc)/(nvars-1)#
-	II_var0.hat.80<-(nvars-1)*var0.hat.80/qchisq(1-alfa/2,nvars-1)#
-	IS_var0.hat.80<-(nvars-1)*var0.hat.80/qchisq(alfa/2,nvars-1)#
-x<-vector()#
-for (i in 1:rep){#
-	if (II_var0.hat.80[i] < sigma^2 && sigma^2 < IS_var0.hat.80[i]) {#
-		x[i]<-1#
-		} else {#
-		x[i]<-0#
-		}#
-}#
-	encerts.80<-round(sum(x)/rep,2)*100#
-nvars=100#
-matriu.x<-matrix(rnorm(rep*nvars,mu,sigma),rep)#
-	mu0.hat.100<-rowMeans(matriu.x)#
-	matriu.xc<-(matriu.x-mu0.hat.100)^2#
-	var0.hat.100<-rowSums(matriu.xc)/(nvars-1)#
-	II_var0.hat.100<-(nvars-1)*var0.hat.100/qchisq(1-alfa/2,nvars-1)#
-	IS_var0.hat.100<-(nvars-1)*var0.hat.100/qchisq(alfa/2,nvars-1)#
-x<-vector()#
-for (i in 1:rep){#
-	if (II_var0.hat.100[i] < sigma^2 && sigma^2 < IS_var0.hat.100[i]) {#
-		x[i]<-1#
-		} else {#
-		x[i]<-0#
-		}#
-}#
-	encerts.100<-round(sum(x)/rep,2)*100#
-#Anàlisi gràfica.#
-#Generem una matriu gràfica d'una fila i dues columnes#
-par(mfrow = c(2,3), oma=c(1, 0, 4, 0))#
-#Gràfic a la posició 1,1#
-y<-seq(0, 10*sigma^2, along=seq(1,rep,1))#
-x<-seq(1,rep,1)#
-plot(x,y, main='n=10',xlab = "Rèpliques", ylab = "", type="n")#
-abline(h=sigma^2)#
-lines(x,var0.hat.10, lty=1, lwd=2, col='red')#
-lines(x,II_var0.hat.10, lty=1, lwd=2, col='blue')#
-lines(x,IS_var0.hat.10, lty=1, lwd=2, col='blue')#
-text(0.75*rep,0.95*(10*sigma^2), "Encerts", cex=1.4, col='brown')#
-text(0.95*rep,0.95*(10*sigma^2), paste(encerts.10,"%"), cex=1.4, col='brown')#
-#Gràfic a la posició 1,2#
-y<-seq(0, 10*sigma^2, along=seq(1,rep,1))#
-x<-seq(1,rep,1)#
-plot(x,y, main='n=20',xlab = "Rèpliques", ylab = "", type="n")#
-abline(h=sigma^2)#
-lines(x,var0.hat.20, lty=1, lwd=2, col='red')#
-lines(x,II_var0.hat.20, lty=1, lwd=2, col='blue')#
-lines(x,IS_var0.hat.20, lty=1, lwd=2, col='blue')#
-text(0.75*rep,0.95*(10*sigma^2), "Encerts", cex=1.4, col='brown')#
-text(0.95*rep,0.95*(10*sigma^2), paste(encerts.20,"%"), cex=1.4, col='brown')#
-#Gràfic a la posició 1,3#
-y<-seq(0, 10*sigma^2, along=seq(1,rep,1))#
-x<-seq(1,rep,1)#
-plot(x,y, main='n=40',xlab = "Rèpliques", ylab = "", type="n")#
-abline(h=sigma^2)#
-lines(x,var0.hat.40, lty=1, lwd=2, col='red')#
-lines(x,II_var0.hat.40, lty=1, lwd=2, col='blue')#
-lines(x,IS_var0.hat.40, lty=1, lwd=2, col='blue')#
-text(0.75*rep,0.95*(10*sigma^2), "Encerts", cex=1.4, col='brown')#
-text(0.95*rep,0.95*(10*sigma^2), paste(encerts.40,"%"), cex=1.4, col='brown')#
-#Gràfic a la posició 1,1#
-y<-seq(0, 10*sigma^2, along=seq(1,rep,1))#
-x<-seq(1,rep,1)#
-plot(x,y, main='n=60',xlab = "Rèpliques", ylab = "", type="n")#
-abline(h=sigma^2)#
-lines(x,var0.hat.60, lty=1, lwd=2, col='red')#
-lines(x,II_var0.hat.60, lty=1, lwd=2, col='blue')#
-lines(x,IS_var0.hat.60, lty=1, lwd=2, col='blue')#
-text(0.75*rep,0.95*(10*sigma^2), "Encerts", cex=1.4, col='brown')#
-text(0.95*rep,0.95*(10*sigma^2), paste(encerts.60,"%"), cex=1.4, col='brown')#
-#Gràfic a la posició 1,1#
-y<-seq(0, 10*sigma^2, along=seq(1,rep,1))#
-x<-seq(1,rep,1)#
-plot(x,y, main='n=80',xlab = "Rèpliques", ylab = "", type="n")#
-abline(h=sigma^2)#
-lines(x,var0.hat.80, lty=1, lwd=2, col='red')#
-lines(x,II_var0.hat.80, lty=1, lwd=2, col='blue')#
-lines(x,IS_var0.hat.80, lty=1, lwd=2, col='blue')#
-text(0.75*rep,0.95*(10*sigma^2), "Encerts", cex=1.4, col='brown')#
-text(0.95*rep,0.95*(10*sigma^2), paste(encerts.80,"%"), cex=1.4, col='brown')#
-#Gràfic a la posició 1,1#
-y<-seq(0, 10*sigma^2, along=seq(1,rep,1))#
-x<-seq(1,rep,1)#
-plot(x,y, main='n=100',xlab = "Rèpliques", ylab = "", type="n")#
-abline(h=sigma^2)#
-lines(x,var0.hat.100, lty=1, lwd=2, col='red')#
-lines(x,II_var0.hat.100, lty=1, lwd=2, col='blue')#
-lines(x,IS_var0.hat.100, lty=1, lwd=2, col='blue')#
-text(0.75*rep,0.95*(10*sigma^2), "Encerts", cex=1.4, col='brown')#
-text(0.95*rep,0.95*(10*sigma^2), paste(encerts.100,"%"), cex=1.4, col='brown')#
-mtext(side=3, line=0, cex=1.5, outer=T,"Interval de confiança per a la Variància Poblacional.Percentatge d'encerts.")#
-mtext(side=1, line=-1, cex=0.75, outer=T, adj=1, "Script creat per Jordi López-Tamayo  ")
-#Jordi López-Tamayo, Gener 2011#
-#Distribució de la relación entre la quasi-variància i l variància poblacional#
-#a mesura que incrementa la mida mostral. P(0.75<=S2<=1.25)#
-sigma<-1#
-IInf<-0.75#
-ISup<-1.25#
-# Generació del gràfic#
-par(mfrow=c(2,2), oma=c(0, 0, 4, 0))#
-eix <- c(0, 100)#
-nobs<-10#
-IInf2<-(nobs-1)*IInf/sigma^2#
-ISup2<-(nobs-1)*ISup/sigma^2#
-x <- seq(eix[1], eix[2], length = 1001)#
-y <- dchisq(x, nobs-1)#
-plot(x, y, type='l', xlab = expression(italic("n=10")), ylab = expression(italic("Densitat")))#
-abline(h = 0)#
-x1 <- x[x >= IInf2 &  x <= ISup2] ; y1 <- dchisq(x1, nobs-1)#
-x2 <- c(x1[1],x1, x1[length(x1)], x1[1])#
-y2 <- c(0, y1, 0, 0)#
-polygon(x2, y2, col = 'yellow')#
-#Afegim Text#
-pr<-pchisq(ISup2,nobs-1)-pchisq(IInf2,nobs-1)#
-Text_I <-paste("[",IInf2,",",ISup2,"]")#
-text(80, 0.85*dchisq(IInf2, nobs-1), Text_I)#
-text(80, 0.75*dchisq(IInf2, nobs-1), round(pr, digits=3))#
-nobs<-20#
-IInf2<-(nobs-1)*IInf/sigma^2#
-ISup2<-(nobs-1)*ISup/sigma^2#
-x <- seq(eix[1], eix[2], length = 1001)#
-y <- dchisq(x, nobs-1)#
-plot(x, y, type='l', xlab = expression(italic("n=20")), ylab = expression(italic("Densitat")))#
-abline(h = 0)#
-x1 <- x[x >= IInf2 &  x <= ISup2] ; y1 <- dchisq(x1, nobs-1)#
-x2 <- c(x1[1],x1, x1[length(x1)], x1[1])#
-y2 <- c(0, y1, 0, 0)#
-polygon(x2, y2, col = 'yellow')#
-#Afegim Text#
-pr<-pchisq(ISup2,nobs-1)-pchisq(IInf2,nobs-1)#
-Text_I <-paste("[",IInf2,",",ISup2,"]")#
-text(80, 0.85*dchisq(IInf2, nobs-1), Text_I)#
-text(80, 0.75*dchisq(IInf2, nobs-1), round(pr, digits=3))#
-nobs<-40#
-IInf2<-(nobs-1)*IInf/sigma^2#
-ISup2<-(nobs-1)*ISup/sigma^2#
-x <- seq(eix[1], eix[2], length = 1001)#
-y <- dchisq(x, nobs-1)#
-plot(x, y, type='l', xlab = expression(italic("n=40")), ylab = expression(italic("Densitat")))#
-abline(h = 0)#
-x1 <- x[x >= IInf2 &  x <= ISup2] ; y1 <- dchisq(x1, nobs-1)#
-x2 <- c(x1[1],x1, x1[length(x1)], x1[1])#
-y2 <- c(0, y1, 0, 0)#
-polygon(x2, y2, col = 'yellow')#
-#Afegim Text#
-pr<-pchisq(ISup2,nobs-1)-pchisq(IInf2,nobs-1)#
-Text_I <-paste("[",IInf2,",",ISup2,"]")#
-text(80, 0.85*dchisq(IInf2, nobs-1), Text_I)#
-text(80, 0.65*dchisq(IInf2, nobs-1), round(pr, digits=3))#
-nobs<-60#
-IInf2<-(nobs-1)*IInf/sigma^2#
-ISup2<-(nobs-1)*ISup/sigma^2#
-x <- seq(eix[1], eix[2], length = 1001)#
-y <- dchisq(x, nobs-1)#
-plot(x, y, type='l', xlab = expression(italic("n=60")), ylab = expression(italic("Densitat")))#
-abline(h = 0)#
-x1 <- x[x >= IInf2 &  x <= ISup2] ; y1 <- dchisq(x1, nobs-1)#
-x2 <- c(x1[1],x1, x1[length(x1)], x1[1])#
-y2 <- c(0, y1, 0, 0)#
-polygon(x2, y2, col = 'yellow')#
-#Afegim Text#
-pr<-pchisq(ISup2,nobs-1)-pchisq(IInf2,nobs-1)#
-Text_I <-paste("[",IInf2,",",ISup2,"]")#
-text(20, 1.25*dchisq(IInf2, nobs-1), Text_I)#
-text(20, dchisq(IInf2, nobs-1), round(pr, digits=3))#
-mtext(side=3, line=0, cex=1.5, outer=T,"Relació entre la quasi-variància i la mida mostral. P(0.75<=S2<=1.25)")#
-mtext(side=1, line=-2, cex=0.75, outer=T, adj=1, "Script creat per Jordi López-Tamayo")
-library(swirl)
-swirl()
-c(44, NA, 5, NA)
-x <- c(44, NA, 5, NA)
-x*3
-y <- rnorm(1000)
-z <- rep(NA, 1000)
-my_data <- sample(c(y, z), 100)
-is.na(my_data)
-my_na <- is.na(my_data)
-my_na
-my_data == NA
-sum(my_na)
-sum(!my_na)
-my_data
-0/0
-Inf - Inf
-#Jordi López-Tamayo, Gener 2011#
-#Relació entre la distribució de la proporció mostral #
-#i la mida mostral#
-phi <- 0.5 ; #
-IInf <-0.45#
-ISup <-0.55#
-Text_I <-paste("[",IInf,",",ISup,"]")#
-# Generació del gràfic#
-Text_I#
-par(mfrow=c(2,2), oma=c(0, 0, 4, 0))#
-nobs<-20#
-sigma_m <-sqrt(phi*(1-phi)/nobs); #
-eix <- c(0,1)#
-x <- seq(eix[1], eix[2], length = 1001)#
-y <- dnorm(x, phi, sigma_m)#
-plot(x, y, type='l', xlab = expression(italic(n==20)), ylab = expression(italic(Densitat)))#
-abline(h = 0)#
-x1 <- x[x >= IInf &  x<= ISup] ; y1 <- dnorm(x1, phi, sigma_m)#
-x2 <- c(x1[1],x1, x1[length(x1)], x1[1])#
-y2 <- c(0, y1, 0, 0)#
-polygon(x2, y2, col = 'blue')#
-#Afegim Text#
-pr<-pnorm(ISup, phi, sigma_m)-pnorm(IInf, phi, sigma_m)#
-text(0.85, 0.85*dnorm(0.5,0.5,sigma_m), Text_I)#
-text(0.85, 0.75*dnorm(0.5,0.5,sigma_m), round(pr, digits=3))#
-nobs<-30#
-sigma_m <-sqrt(phi*(1-phi)/nobs); #
-x <- seq(eix[1], eix[2], length = 1001)#
-y <- dnorm(x, phi, sigma_m)#
-plot(x, y, type='l', xlab = expression(italic(n==30)), ylab = expression(italic(Densitat)))#
-abline(h = 0)#
-x1 <- x[x >= IInf &  x<= ISup] ; y1 <- dnorm(x1, phi, sigma_m)#
-x2 <- c(x1[1],x1, x1[length(x1)], x1[1])#
-y2 <- c(0, y1, 0, 0)#
-polygon(x2, y2, col = 'blue')#
-pr<-pnorm(ISup, phi, sigma_m)-pnorm(IInf, phi, sigma_m)#
-text(0.85, 0.85*dnorm(0.5,0.5,sigma_m), Text_I)#
-text(0.85, 0.75*dnorm(0.5,0.5,sigma_m), round(pr, digits=3))#
-nobs<-50#
-sigma_m <-sqrt(phi*(1-phi)/nobs); #
-x <- seq(eix[1], eix[2], length = 1001)#
-y <- dnorm(x, phi, sigma_m)#
-plot(x, y, type='l', xlab = expression(italic(n==50)), ylab = expression(italic(Densitat)))#
-abline(h = 0)#
-x1 <- x[x >= IInf &  x<= ISup] ; y1 <- dnorm(x1, phi, sigma_m)#
-x2 <- c(x1[1],x1, x1[length(x1)], x1[1])#
-y2 <- c(0, y1, 0, 0)#
-polygon(x2, y2, col = 'blue')#
-#Afegim Text#
-pr<-pnorm(ISup, phi, sigma_m)-pnorm(IInf, phi, sigma_m)#
-text(0.85, 0.85*dnorm(0.5,0.5,sigma_m), Text_I)#
-text(0.85, 0.75*dnorm(0.5,0.5,sigma_m), round(pr, digits=3))#
-nobs<-100#
-sigma_m <-sqrt(phi*(1-phi)/nobs); #
-x <- seq(eix[1], eix[2], length = 1001)#
-y <- dnorm(x, phi, sigma_m)#
-plot(x, y, type='l', xlab = expression(italic(n==100)), ylab = expression(italic(Densitat)))#
-abline(h = 0)#
-x1 <- x[x >= IInf &  x<= ISup] ; y1 <- dnorm(x1, phi, sigma_m)#
-x2 <- c(x1[1],x1, x1[length(x1)], x1[1])#
-y2 <- c(0, y1, 0, 0)#
-polygon(x2, y2, col = 'blue')#
-#Afegim Text#
-pr<-pnorm(ISup, phi, sigma_m)-pnorm(IInf, phi, sigma_m)#
-text(0.85, 0.85*dnorm(0.5,0.5,sigma_m), Text_I)#
-text(0.85, 0.75*dnorm(0.5,0.5,sigma_m), round(pr, digits=3))#
-mtext(side=3, line=0, cex=1.5, outer=T,"Relació entre la proporció mostral i la mida mostral")#
-mtext(side=1, line=-2, cex=0.75, outer=T, adj=1, "Script creat per Jordi López-Tamayo")
-?"=="
-make.NegLogLik <- function(data, fixed=c(FALSE, FALSE)){#
-	params <- fixed#
-	function(p) {#
-		params[!fixed] <- p#
-		mu <- params[1]#
-		sigma <- params[2]#
-		a <- -0.5*length(data)*log(2*pi*sigma^2)#
-		b <- -0.5*sum((data-mu)^2)/(sigma^2)#
-		-(a+b)#
-	}#
-}
-library(swirl)
-swirl()
-x
-x[1:10]
-x[1:10]
-x[is.na(x)]
-x[!is.na(x)]
-y <- x[!is.na(x)]
-y
-y[y > 0]
-x[x > 0]
-x[!is.na(x) & x > 0]
-x[c(3, 5, 7)]
-x[0]
-x[3000]
-x[c(-2, -10)]
-x[-c(2, 10)]
-vect <- c(foo = 11, bar = 2, norf = NA)
-vect
-names(vect)
-vect2 <- c(11, 2, NA)
-names(vect2)
-names(vect2) <- c("foo", "bar", "norf")
-identical(vect, vect2)
-vect["bar"]
-vect[c("foo", "bar")]
-dir()
-pwd ../data
-cd data
-touch data
-mkdir data
-mkdir(data)
-touch(data)
-cd(data)
-pwd../data
-pwd.../data
-installed.packages()
-library(KernSmooth)
-library(swirl)
-swirl()
-patients <- c("Bill", "Gina", "Kelly", "Sean")
-cbind(patients, my_matrix)
-my_data <- data.frame(patients, my_matrix)
-my_data
-class(my_dat)
-class(my_data)
-cnames <- c("patient, "age", "weight", "bp", "rating", "test)
-cnames <- c("patient, "age", "weight", "bp", "rating", "test")
-cnames <- c("patient", "age", "weight", "bp", "rating", "test")
-colnames(cnames)
-colnames(my_data) <- cnames
-my_data
-library()
-library(swirl)
-swirl()
-my_vector <- c(1:20)
-my_vector <- 1:20
-my_vector
-dim()
-dim(my_vector)
-length(my_vector)
-dim(my_vector) <- c(4, 5)
-dim(my_vector)
-attributes(my_vector)
-my_vector
-class(my_vector)
-my_matrix <- my_vector
-?matrix()
-?matric
-?matrix
-my_matrix2 <- matrix(1:20, 4, 5)
-identical(my_matrix. my_matrix2)
-identical(my_matrix, my_matrix2)
-patients <- c("Bill", "Gina", "Kelly", "Sean")
-cbind(patients, my_matrix)
-my_data <- data.frame(patients, my_matrix)
-my_data
-class(my_data)
-cnames <- c("patient", "age", "weight", "bp", "rating", "test")
-colnames(cnames)
-colnames(my_data) <- cnames
-my_data
-mu <- 77
-xbar <- 50
-sigma <- 20
-z <- (xbar - mu)/sigma
-z
-pnorm(-abs(z))
-xbar <- 100
-z <- (xbar - mu)/sigma
-z
-pnorm(-abs(z))
-mu <- 32.62
-sigma <- 2.32
-xbar <- 35
-z <- (xbar - mu)/sigma
-z
-pnorm(z)
-xbar <- 30
-z <- (xbar - mu)/sigma
-z
-pnorm(z)
-xbar <- 28
-z <- (xbar - mu)/sigma
-z
-pnorm(z)
-xpop <- c(214, 202, 174, 163, 198, 171, 265, 212, 211, 194, 201, 211, 180)
-mean(xpop)
-mode(xpop)
-median(xpop)
-?mean
-mean(xpop, trim=0)
-sd(xpop)
-mu <- mean(xpop)
-sigma <- sd(xpop)
-xbar <- 180
-z <- (xbar - mu)/sigma
-z
-pnorm(z)
-xbar <- 230
-z <- (xbar - mu)/sigma
-z
-pnorm(-abs(z))
-mu + (1.645*sigma)
-pnorm(-abs(0.86))
-a <- available.packages(head(rownames"a"))
-install.packages("slidify")
-a <- available.packages("swirl")
-available.packages()
-~/ExData_Plotting1/figure/unnamed-chunk-2.png
-library(datasets)
-data(iris)
-?iris
-mean("Sepal.Length")
-iris
-x <- iris
-x
-subset <- x[2, ]
-subset
-subset <- x[ ,2]
-subset
-subset <- x[ ,1]
-subset
-mean(subset)
-library(datasets)
-data(iris)
-?iris
-iris
-x <- iris
-subset <- x[ ,1]
-subset
-subset [101]
-subset [101, 150]
-datasubset$virginica
-iris$virginica
-subset [101 - 150]
-?[]
-?[
-iris$Sepal.Length$virginica
-subset
-mean(subset[101, 150])
-subset [101:150]
-mean(subset [101:150])
-apply(iris[, 1:4], 2, mean)
-mean(subset)
-library(datasets)
-data(mtcars)
-mtcars
-lapply(mtcars, mean)
-apply(mtcars, 2, mean)
-sapply(split(mtcars$mpg, mtcars$cyl), mean)
-sapply(mtcars, cyl, mean)
-sapply(split(mtcars$hp, mtcars$cyl), mean)
-209.21429 - 82.63636
-debug(ls)
-ls
-debug(ls)
-ls
-identical(ls, debug(ls))
-debug(ls)
-call(ls)
-source("submitscript3.R")
-dir()
-source("rprog-scripts-submitscript3.R")
-best <- function(state, outcome) {#
-        ## Read outcome data#
-        ##outcome_name: "heart attack", "heart failure", "pneumonia"#
-## Check that state and outcome are valid#
-## Return hospital name in that state with lowest 30-day death#
-## rate#
-        #read in the desired data#
-        data <- read.csv("outcome-of-care-measures.csv", colClasses = "character")#
-        #check if the state and outcomes are valid#
-        states <- data[ , 7]#
-        outcomes <- c("heart attack", "heart failure", "pneumonia")#
-        if ((state %in% states) == FALSE) {#
-                stop(print("invalid state"))#
-        }#
-        else if ((outcome %in% outcomes) == FALSE) {#
-                stop(print("invalid outcome"))#
-        }#
-        #get the subset of the data with the desired state#
-        new_data <- subset(data, State == state)#
-        #get the desired outcome column from the data file#
-        if (outcome == "heart attack") {#
-                outcome_column <- 11#
-        }#
-        else if (outcome == "heart failure") {#
-                outcome_column <- 17#
-        }#
-        else {#
-                outcome_column <- 23#
-        }#
-        #get rid of the NA's in the desired outcome column#
-        required_columns <- as.numeric(new_data[,outcome_column])#
-        bad <- is.na(required_columns)#
-        desired_data <- new_data[!bad, ]#
-        #find the hospitals in the rows with the minimum outcome value#
-        columns_considered <- as.numeric(desired_data[, outcome_column])#
-        desired_rows <- which(columns_considered == min(columns_considered))#
-        desired_hospitals <- desired_data[desired_rows, 2]#
-        #if there are multiple hospitals with the minimum outcome value, then#
-        #return the first hospital name from the alphabetically sorted hospital#
-        #names list#
-        if (length(desired_hospitals) > 1) {#
-                hospitals_sorted <- sort(desired_hospitals)#
-                hospitals_sorted[1]#
-        }#
-        else {#
-                desired_hospitals#
-        }#
-}
-submit()
-submit()
-best <- function(state, outcome) {#
-        ## Read outcome data#
-        ##outcome_name: "heart attack", "heart failure", "pneumonia"#
-## Check that state and outcome are valid#
-## Return hospital name in that state with lowest 30-day death#
-## rate#
-        #read in the desired data#
-        data <- read.csv("outcome-of-care-measures.csv", colClasses = "character")#
-        #check if the state and outcomes are valid#
-        states <- data[ , 7]#
-        outcomes <- c("heart attack", "heart failure", "pneumonia")#
-        if ((state %in% states) == FALSE) {#
-                stop(print("invalid state"))#
-        }#
-        else if ((outcome %in% outcomes) == FALSE) {#
-                stop(print("invalid outcome"))#
-        }#
-        #get the subset of the data with the desired state#
-        new_data <- subset(data, State == state)#
-        #get the desired outcome column from the data file#
-        if (outcome == "heart attack") {#
-                outcome_column <- 11#
-        }#
-        else if (outcome == "heart failure") {#
-                outcome_column <- 17#
-        }#
-        else {#
-                outcome_column <- 23#
-        }#
-        #get rid of the NA's in the desired outcome column#
-        required_columns <- as.numeric(new_data[,outcome_column])#
-        bad <- is.na(required_columns)#
-        desired_data <- new_data[!bad, ]#
-        #find the hospitals in the rows with the minimum outcome value#
-        columns_considered <- as.numeric(desired_data[, outcome_column])#
-        desired_rows <- which(columns_considered == min(columns_considered))#
-        desired_hospitals <- desired_data[desired_rows, 2]#
-        #if there are multiple hospitals with the minimum outcome value, then#
-        #return the first hospital name from the alphabetically sorted hospital#
-        #names list#
-        if (length(desired_hospitals) > 1) {#
-                hospitals_sorted <- sort(desired_hospitals)#
-                hospitals_sorted[1]#
-        }#
-        else {#
-                desired_hospitals#
-        }#
-}
-dir()
-submit()
-submit()
